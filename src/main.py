@@ -26,7 +26,8 @@ def read_root():
     return {"status": "ok"}
 
 
-@app.get("/items/{item_id}", response_model=Item)
+@app.get("/items/{item_id}", response_model=Item,
+         responses={404: {"description": "Item not found"}, 400: {"description": "Invalid X-Token header"}})
 def get_item_by_id(item_id: str, x_token: str = Header()):
     if x_token != fake_secret_token:
         raise HTTPException(status_code=400, detail="Invalid X-Token header")
