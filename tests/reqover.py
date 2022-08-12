@@ -56,7 +56,6 @@ def upload_results(results_url, root_folder=os.path.join(sys.path[0], 'reqover-r
                 continue
 
             absolute_file_path = os.path.join(root_folder, path)
-            print(path)
             with open(absolute_file_path, "r") as f:
                 data = json.loads(f.read())
                 requests.post(results_url, json=data)
