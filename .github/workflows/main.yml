@@ -42,3 +42,10 @@ jobs:
       - name: Run a multi-line script
         run: |
           BRANCH=${BRANCH_NAME} pytest tests/ -sv
+        
+      - name: Publish Reqover results
+        uses: reqover/reqover-action@master
+        with:
+          projectToken: cpkoaj8qiwsw
+          buildName: master
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
