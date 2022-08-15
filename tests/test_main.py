@@ -55,3 +55,16 @@ def test_create_item_bad_token(client):
     ))
     assert response.status_code == 400
     assert response.json() == {"detail": "Invalid X-Token header"}
+
+
+def test_can_not_create_item_without_token(client):
+    response = cover(client.post(
+        "/items/",
+        json={"id": "bazz", "title": "Bazz", "description": "Drop the bazz"},
+    ))
+    assert response.status_code == 422
+
+
+def test_can_get_404_if_not_found(client):
+    response = cover(client.get("/items/dev", headers={"X-Token": "coneofsilence"}))
+    assert response.status_code == 404
