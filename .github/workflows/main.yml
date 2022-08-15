@@ -47,5 +47,5 @@ jobs:
         uses: reqover/reqover-action@master
         with:
           projectToken: cpkoaj8qiwsw
-          buildName: ${{ BRANCH_NAME }}
+          buildName: $BRANCH_NAME
           githubToken: ${{ secrets.GITHUB_TOKEN }}
