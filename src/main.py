@@ -21,7 +21,7 @@ fake_secret_token = "coneofsilence"
 app = FastAPI()
 
 
-@app.get("/status")
+@app.get("/status", deprecated=True)
 def read_root():
     return {"status": "ok"}
 
